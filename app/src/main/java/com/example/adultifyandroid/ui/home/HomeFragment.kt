@@ -25,28 +25,27 @@ class HomeFragment : Fragment() {
 
     private val worldViewModel: WorldViewModel by viewModels()
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+//        val homeViewModel =
+//            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        worldViewModel.worlds.observe(this.viewLifecycleOwner) { worlds ->
+        worldViewModel.worlds.observe(viewLifecycleOwner) { worlds ->
             val worldAdapter = WorldAdapter(worlds, requireContext())
             binding.recyclerView.adapter = worldAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
         }
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it + "!!"
-        }
+//        val textView: TextView = binding.textHome
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it + "!!"
+//        }
         return root
     }
 

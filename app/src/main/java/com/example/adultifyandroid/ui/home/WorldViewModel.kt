@@ -18,12 +18,6 @@ class WorldViewModel @Inject internal constructor(
 
     var worlds: MutableLiveData<List<World>> = MutableLiveData()
 
-//    fun loadWorlds() = viewModelScope.launch {
-//        gameService.getWorlds().collect {
-//            worlds.postValue(it)
-//        }
-//    }
-
     init {
         viewModelScope.launch {
             gameService.getWorlds().collect {
