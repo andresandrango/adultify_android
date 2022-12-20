@@ -35,18 +35,12 @@ class CitizenFragment : Fragment() {
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
         }
 
-        binding.swipeRefresh.setOnRefreshListener {
+        binding.swipeRefreshCitizens.setOnRefreshListener {
             update()
         }
 
         return root
     }
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(CitizenViewModel::class.java)
-//        // TODO: Use the ViewModel
-//    }
 
     private fun update() {
         // Get the data synchronously or asynchronously
@@ -55,7 +49,7 @@ class CitizenFragment : Fragment() {
 
         viewModel.refresh()
 
-        binding.swipeRefresh.isRefreshing = false
+        binding.swipeRefreshCitizens.isRefreshing = false
     }
 
     override fun onDestroyView() {

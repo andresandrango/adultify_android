@@ -39,11 +39,21 @@ class HomeFragment : Fragment() {
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
         }
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it + "!!"
-//        }
+        binding.swipeRefresh.setOnRefreshListener {
+            update()
+        }
+
         return root
+    }
+
+    private fun update() {
+        // Get the data synchronously or asynchronously
+        // update the view with the data
+        // then: (remove the code relative to the Handler)
+
+        worldViewModel.refresh()
+
+        binding.swipeRefresh.isRefreshing = false
     }
 
     override fun onDestroyView() {
