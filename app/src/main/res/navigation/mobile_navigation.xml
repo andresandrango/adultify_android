@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.adultifyandroid.ui.dashboard.DashboardFragment"
+        android:name="com.example.adultifyandroid.ui.citizen.CitizenFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_citizen" />
 
     <fragment
         android:id="@+id/navigation_notifications"

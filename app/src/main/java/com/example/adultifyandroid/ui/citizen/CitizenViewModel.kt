@@ -1,25 +1,29 @@
-package com.example.adultifyandroid.ui.home
+package com.example.adultifyandroid.ui.citizen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.adultifyandroid.gameserver.Citizen
 import com.example.adultifyandroid.gameserver.GameService
-import com.example.adultifyandroid.gameserver.World
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WorldViewModel @Inject internal constructor(
-    private val gameService: GameService,
+class CitizenViewModel @Inject internal constructor(
+    private val gameService: GameService
 ) : ViewModel() {
 
-    var worlds: MutableLiveData<List<World>> = MutableLiveData()
+    var citizens: MutableLiveData<List<Citizen>> = MutableLiveData()
 
     init {
+        refresh()
+    }
+
+    fun refresh() {
         viewModelScope.launch {
-            gameService.getWorlds().collect {
-                worlds.postValue(it)
+            gameService.getCitizens().collect {
+                citizens.postValue(it)
             }
         }
     }

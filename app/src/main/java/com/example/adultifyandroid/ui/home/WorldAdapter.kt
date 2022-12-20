@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adultifyandroid.R
 import com.example.adultifyandroid.gameserver.World
+import com.example.adultifyandroid.ui.citizen.CitizenAdapter
 
 internal class WorldAdapter(private var itemsList: List<World>, private var context: Context) :
 RecyclerView.Adapter<WorldAdapter.MyViewHolder>() {

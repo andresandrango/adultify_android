@@ -1,4 +1,4 @@
-package com.example.adultifyandroid.ui.home;
+package com.example.adultifyandroid.ui.citizen;
 
 import com.example.adultifyandroid.R
 

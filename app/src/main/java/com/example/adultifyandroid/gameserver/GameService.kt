@@ -11,16 +11,31 @@ import kotlinx.coroutines.flow.Flow
 
 class GameService {
 
+    private val _HOST :String = "http://192.168.0.249:7070";
+
     suspend fun getWorlds() : Flow<List<World>> {
         return flow {
             val response = withContext(Dispatchers.IO) {
-                URL("http://192.168.0.249:7070/worlds")
+                URL("${_HOST}/worlds")
                     .openStream()
             }
                 .bufferedReader()
                 .use { it.readText() }
 
             emit(Json.decodeFromString<List<World>>(response))
+        }.catch { cause -> println(cause) }
+    }
+
+    suspend fun getCitizens() : Flow<List<Citizen>> {
+        return flow {
+            val response = withContext(Dispatchers.IO) {
+                URL("${_HOST}/citizens")
+                    .openStream()
+            }
+                .bufferedReader()
+                .use { it.readText() }
+
+            emit(Json.decodeFromString<List<Citizen>>(response))
         }.catch { cause -> println(cause) }
     }
 }
