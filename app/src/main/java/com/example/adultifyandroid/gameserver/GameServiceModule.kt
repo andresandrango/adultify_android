@@ -12,7 +12,7 @@ class GameServiceModule {
 
     @Provides
     @Singleton
-    fun provideGameService() :GameService {
-        return GameService();
+    fun provideGameService() : GameService {
+        return GameService()
     }
 }

@@ -22,9 +22,12 @@ class CitizenViewModel @Inject internal constructor(
 
     fun refresh() {
         viewModelScope.launch {
-            gameService.getCitizens().collect {
-                citizens.postValue(it)
+            val result = gameService.api.listCitizens()
+
+            if (result.isSuccessful) {
+                citizens.postValue(result.body())
             }
+
         }
     }
 }

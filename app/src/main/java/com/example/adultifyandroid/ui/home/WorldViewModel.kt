@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WorldViewModel @Inject internal constructor(
-    private val gameService: GameService,
+    private val gameService: GameService
 ) : ViewModel() {
 
     var worlds: MutableLiveData<List<World>> = MutableLiveData()
@@ -22,9 +22,10 @@ class WorldViewModel @Inject internal constructor(
 
     fun refresh() {
         viewModelScope.launch {
-            gameService.getWorlds().collect {
-                worlds.postValue(it)
-            }
+            val result = gameService.api.listWorlds()
+                if (result.isSuccessful) {
+                    worlds.postValue(result.body())
+                }
         }
     }
 }

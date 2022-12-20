@@ -1,17 +1,25 @@
 package com.example.adultifyandroid.ui.citizen
 
+import android.media.MediaRouter.SimpleCallback
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adultifyandroid.databinding.FragmentCitizenBinding
+import com.example.adultifyandroid.gameserver.Citizen
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class CitizenFragment : Fragment() {
+
+    @Inject lateinit var citizenAdapterFactory: CitizenAdapterFactory
+
 
     private var _binding: FragmentCitizenBinding? = null
 
@@ -30,9 +38,12 @@ class CitizenFragment : Fragment() {
         val root: View = binding.root
 
         viewModel.citizens.observe(viewLifecycleOwner) { citizens ->
-            val citizenAdapter = CitizenAdapter(citizens)
+            val citizenAdapter = citizenAdapterFactory.create(citizens as MutableList<Citizen>)
             binding.recyclerView.adapter = citizenAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(citizenAdapter, ItemTouchHelper.LEFT, ItemTouchHelper.LEFT))
+            itemTouchHelper.attachToRecyclerView(binding.recyclerView)
         }
 
         binding.swipeRefreshCitizens.setOnRefreshListener {
