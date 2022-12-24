@@ -22,4 +22,7 @@ interface GameServiceInterface {
 
     @DELETE("citizens/{cId}")
     suspend fun deleteCitizen(@Path("cId") cId: String): Response<ResponseBody>
+
+    @GET("citizens/{cId}/worlds")
+    suspend fun listWorldsOfCitizen(@Path("cId") cId: String): Response<List<World>>
 }

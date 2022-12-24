@@ -1,4 +1,4 @@
-package com.example.adultifyandroid.ui.home
+package com.example.adultifyandroid.ui.world
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

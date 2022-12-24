@@ -1,4 +1,4 @@
-package com.example.adultifyandroid.ui.home
+package com.example.adultifyandroid.ui.world
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,16 +16,15 @@ class WorldViewModel @Inject internal constructor(
 
     var worlds: MutableLiveData<List<World>> = MutableLiveData()
 
-    init {
-       refresh()
-    }
+    var counter: MutableLiveData<Int> = MutableLiveData(0)
 
-    fun refresh() {
+    fun fetchWorlds(cId : String) {
+        counter.postValue(counter.value?.plus(1))
         viewModelScope.launch {
-            val result = gameService.api.listWorlds()
-                if (result.isSuccessful) {
-                    worlds.postValue(result.body())
-                }
+            val result = gameService.api.listWorldsOfCitizen(cId)
+            if (result.isSuccessful) {
+                worlds.postValue(result.body())
+            }
         }
     }
 }
