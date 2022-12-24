@@ -13,8 +13,6 @@ import com.example.adultifyandroid.databinding.FragmentHomeBinding
 import com.example.adultifyandroid.gameserver.World
 import com.example.adultifyandroid.ui.User.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @AndroidEntryPoint

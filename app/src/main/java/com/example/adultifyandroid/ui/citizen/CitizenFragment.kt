@@ -1,6 +1,5 @@
 package com.example.adultifyandroid.ui.citizen
 
-import android.media.MediaRouter.SimpleCallback
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

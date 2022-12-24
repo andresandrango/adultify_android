@@ -25,4 +25,7 @@ interface GameServiceInterface {
 
     @GET("citizens/{cId}/worlds")
     suspend fun listWorldsOfCitizen(@Path("cId") cId: String): Response<List<World>>
+
+    @GET("citizens/{cId}/missions")
+    suspend fun listMissionsOfCitizen(@Path("cId") cId: String): Response<List<Mission>>
 }

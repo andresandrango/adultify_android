@@ -64,6 +64,9 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Still experimental (for serializing dates)
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 }
 
 // Allow references to generated code
