@@ -19,7 +19,6 @@ class CitizenFragment : Fragment() {
 
     @Inject lateinit var citizenAdapterFactory: CitizenAdapterFactory
 
-
     private var _binding: FragmentCitizenBinding? = null
 
     // This property is only valid between onCreateView and

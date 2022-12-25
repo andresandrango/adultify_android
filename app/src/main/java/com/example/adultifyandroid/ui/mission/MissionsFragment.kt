@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.adultifyandroid.R
 import com.example.adultifyandroid.databinding.FragmentMissionsBinding
 import com.example.adultifyandroid.gameserver.Mission
 import com.example.adultifyandroid.gameserver.World
@@ -27,6 +30,8 @@ class MissionsFragment : Fragment() {
     private val missionViewModel: MissionViewModel by viewModels()
     private val userViewModel: UserViewModel by viewModels()
 
+    lateinit var navController: NavController
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,6 +49,17 @@ class MissionsFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // VM
+        navController = Navigation.findNavController(view)
+
+        binding.addMissionFloatingButton.setOnClickListener {
+            navController.navigate(R.id.action_navigation_missions_to_addMissionFragment)
+        }
     }
 
     private fun setupRecyclerView(missions: List<Mission>) {

@@ -20,5 +20,20 @@
     <fragment
         android:id="@+id/navigation_missions"
         android:name="com.example.adultifyandroid.ui.mission.MissionsFragment"
-        android:label="@string/title_missions" />
+        android:label="@string/title_missions" >
+        <action
+            android:id="@+id/action_navigation_missions_to_addMissionFragment"
+            app:destination="@id/addMissionFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/navigation_missions"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMissionFragment"
+        android:name="com.example.adultifyandroid.ui.mission.AddMissionFragment"
+        android:label="AddMissionFragment" >
+        <action
+            android:id="@+id/action_addMissionFragment_to_navigation_missions"
+            app:destination="@id/navigation_missions" />
+    </fragment>
 </navigation>

@@ -2,8 +2,10 @@ package com.example.adultifyandroid.gameserver
 
 import okhttp3.ResponseBody
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface GameServiceInterface {
@@ -28,4 +30,7 @@ interface GameServiceInterface {
 
     @GET("citizens/{cId}/missions")
     suspend fun listMissionsOfCitizen(@Path("cId") cId: String): Response<List<Mission>>
+
+    @POST("missions/create")
+    suspend fun createMission(@Body mission: Mission): Response<Mission>
 }
