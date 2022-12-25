@@ -20,6 +20,10 @@ class MissionViewModel @Inject internal constructor(
 
     var missions: MutableLiveData<List<Mission>> = MutableLiveData()
 
+    override fun onCleared() {
+        super.onCleared()
+    }
+
     fun createMission(mission: Mission): LiveData<Response<Mission>> {
         viewModelScope.launch {
             currentMissionResponse.postValue(gameService.api.createMission(mission))

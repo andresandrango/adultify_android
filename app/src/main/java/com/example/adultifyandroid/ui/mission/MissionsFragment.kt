@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -27,7 +28,7 @@ class MissionsFragment : Fragment() {
     private var _binding: FragmentMissionsBinding? = null
     private val binding get() = _binding!!
 
-    private val missionViewModel: MissionViewModel by viewModels()
+    private val missionViewModel: MissionViewModel by activityViewModels()
     private val userViewModel: UserViewModel by viewModels()
 
     lateinit var navController: NavController
